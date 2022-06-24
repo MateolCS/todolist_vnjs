@@ -1,4 +1,4 @@
-class Project {
+export default class Project {
     name = ''
     tasks = []
     constructor({inName, inTasks}){
@@ -21,4 +21,14 @@ class Project {
     setTasks(inTasks){
         this.tasks = inTasks
     }
+
+    addTask(inTask){
+        this.tasks = [...inTask]
+    }
+
+    deleteTask(delTaskName){
+        this.tasks.filter((task) => task.name !== delTaskName)
+    }
+
+
 }
