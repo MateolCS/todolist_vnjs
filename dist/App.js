@@ -16,7 +16,7 @@
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\nclass Project {\n    name = ''\n    tasks = []\n    constructor(inName, inTasks){\n        this.name = inName\n        this.tasks = inTasks\n    }\n\n    setName(inName){\n        this.name = inName\n    }\n\n    getName(){\n        return this.name\n    }\n\n    getTasks(){\n        return this.tasks\n    }\n\n    setTasks(inTasks){\n        this.tasks = inTasks\n    }\n\n    addTask(inTask){\n        this.tasks.push(inTask)\n    }\n\n    deleteTask(delTaskName){\n        this.tasks = this.tasks.filter((task) => task.name !== delTaskName)\n    }\n\n\n}\n\n//# sourceURL=webpack://todo-list/./src/Project.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\nclass Project {\n    name = ''\n    tasks = []\n    constructor(inName, inTasks){\n        this.name = inName\n        this.tasks = inTasks\n    }\n\n    setName(inName){\n        this.name = inName\n    }\n\n    getName(){\n        return this.name\n    }\n\n    getTasks(){\n        return this.tasks\n    }\n\n    getTask(taskName){\n        return this.tasks.find((task) => task.name === taskName)\n    }\n\n    setTasks(inTasks){\n        this.tasks = inTasks\n    }\n\n    addTask(inTask){\n        this.tasks.push(inTask)\n    }\n\n    deleteTask(delTaskName){\n        this.tasks = this.tasks.filter((task) => task.name !== delTaskName)\n    }\n\n\n}\n\n//# sourceURL=webpack://todo-list/./src/Project.js?");
 
 /***/ }),
 
@@ -30,13 +30,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/ToDoList.js":
+/*!*************************!*\
+  !*** ./src/ToDoList.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ toDoList)\n/* harmony export */ });\n/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ \"./src/Project.js\");\n\n\nclass toDoList{\n    projects = []\n\n    constructor(){\n        this.projects.push(new _Project__WEBPACK_IMPORTED_MODULE_0__[\"default\"]('Default', []))\n    }\n\n    addProject(inProject){\n        this.projects.push(inProject)\n    }\n\n    deleteProject(delProjectName){\n        this.projects.filter((project) => project.name === delProjectName)\n    }    \n}\n\n//# sourceURL=webpack://todo-list/./src/ToDoList.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ \"./src/Project.js\");\n/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Task */ \"./src/Task.js\");\n\n\n\nconst task1 = new _Task__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dog', '10.10.2022', 'go out with dog', 1)\nconst task2 = new _Task__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dog', '10.10.2022', 'go out with dog', 1)\nconst task3 = new _Task__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dog', '10.10.2022', 'go out with dog', 1)\nconst task4 = new _Task__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dog', '10.10.2022', 'go out with dog', 1)\n\nconst newtask = new _Task__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Gym', '10.10.2022', 'workout time', 1)\n\nconst tasks = [task1, task2, task3, task4]\n\n\n\n\nconst testProject = new _Project__WEBPACK_IMPORTED_MODULE_0__[\"default\"]('Chores', tasks)\n\nconsole.log(testProject)\ntestProject.addTask(newtask)\nconsole.log(testProject)\n// testProject.deleteTask('Dog')\n// console.log(testProject)\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ \"./src/Project.js\");\n/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Task */ \"./src/Task.js\");\n/* harmony import */ var _ToDoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToDoList */ \"./src/ToDoList.js\");\n\n\n\n\n// const task1 = new Task('Dog', '10.10.2022', 'go out with dog', 1)\n// const task2 = new Task('Dog', '10.10.2022', 'go out with dog', 1)\n// const task3 = new Task('Dog', '10.10.2022', 'go out with dog', 1)\n// const task4 = new Task('Dog', '10.10.2022', 'go out with dog', 1)\n\n// const newtask = new Task('Gym', '10.10.2022', 'workout time', 1)\n\n// const tasks = [task1, task2, task3, task4]\n\n\n\n\n// const testProject = new Project('Chores', tasks)\n\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
