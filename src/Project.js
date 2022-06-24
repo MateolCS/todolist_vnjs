@@ -1,7 +1,7 @@
 export default class Project {
     name = ''
     tasks = []
-    constructor({inName, inTasks}){
+    constructor(inName, inTasks){
         this.name = inName
         this.tasks = inTasks
     }
@@ -23,11 +23,11 @@ export default class Project {
     }
 
     addTask(inTask){
-        this.tasks = [...inTask]
+        this.tasks.push(inTask)
     }
 
     deleteTask(delTaskName){
-        this.tasks.filter((task) => task.name !== delTaskName)
+        this.tasks = this.tasks.filter((task) => task.name !== delTaskName)
     }
 
 

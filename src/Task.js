@@ -4,7 +4,7 @@ export default class Task{
     description =''
     priority = 1
 
-    constructor({inName, inDueDate, inDescription, inPriority}){
+    constructor(inName, inDueDate, inDescription, inPriority){
         this.name = inName
         this.dueDate = inDueDate
         this.description = inDescription
