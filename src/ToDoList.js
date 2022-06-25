@@ -4,6 +4,7 @@ export default class toDoList{
     projects = []
 
     constructor(){
+        this.projects = []
         this.projects.push(new Project('Default', []))
     }
 
@@ -13,5 +14,13 @@ export default class toDoList{
 
     deleteProject(delProjectName){
         this.projects.filter((project) => project.name === delProjectName)
-    }    
+    }
+    
+    getProjects(){
+        return this.projects
+    }
+
+    setProjects(inProjects){
+        this.projects = inProjects
+    }
 }
