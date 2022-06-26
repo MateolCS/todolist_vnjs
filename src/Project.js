@@ -34,5 +34,29 @@ export default class Project {
         this.tasks = this.tasks.filter((task) => task.name !== delTaskName)
     }
 
+    renameTask(taskName, newTaskName){
+        this.tasks.filter((task) => {
+            if(task.getTaskName() === taskName){
+                task.setTaskName(newTaskName)
+            }
+        })
+    }
+
+    changeTaskDescription(taskName, newDescription){
+        this.tasks.filter((task) => {
+            if(task.getTaskName() === taskName){
+                task.setDescription(newDescription)
+            }
+        })
+    }
+
+    changeTaskPriority(taskName, newPriority){
+        this.tasks.filter((task) => {
+            if(task.getTaskName() === taskName){
+                task.setPriority(newPriority)
+            }
+        })
+    }
+
 
 }

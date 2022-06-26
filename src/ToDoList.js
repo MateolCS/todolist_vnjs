@@ -1,4 +1,5 @@
 import Project from './Project'
+import Task from './Task'
 
 export default class toDoList{
     projects = []
@@ -22,5 +23,29 @@ export default class toDoList{
 
     setProjects(inProjects){
         this.projects = inProjects
+    }
+
+    renameTask(projectName, taskName, newTaskName){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.renameTask(taskName, newTaskName)
+            }
+        })
+    }
+
+    changeTaskDescription(projectName, taskName, newDescription){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.changeTaskDescription(taskName, newDescription)
+            }
+        })
+    }
+
+    changeTaskPriority(projectName, taskName, newPriority){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.changeTaskPriority(taskName, newPriority)
+            }
+        })
     }
 }
