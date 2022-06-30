@@ -16,6 +16,14 @@ export default class toDoList{
     deleteProject(delProjectName){
         this.projects.filter((project) => project.name === delProjectName)
     }
+
+    renameProject(projectName, newProjectName){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.setName(newProjectName)
+            }
+        })
+    }
     
     getProjects(){
         return this.projects
@@ -41,10 +49,34 @@ export default class toDoList{
         })
     }
 
-    changeTaskPriority(projectName, taskName, newPriority){
+    changeTaskDueDate(projectName, taskName, newDueDate){
         this.projects.filter((project)=>{
             if(project.getName() === projectName){
-                project.changeTaskPriority(taskName, newPriority)
+                project.changeTaskDueDate(taskName, newDueDate)
+            }
+        })
+    }
+
+    changeTaskStatus(projectName, taskName, newStatus){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.changeTaskStatus(taskName, newStatus)
+            }
+        })
+    }
+
+    deleteTask(projectName, taskName){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.deleteTask(taskName)
+            }
+        })
+    }
+
+    addTask(projectName, inTask){
+        this.projects.filter((project)=>{
+            if(project.getName() === projectName){
+                project.addTask(inTask)
             }
         })
     }

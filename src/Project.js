@@ -50,10 +50,18 @@ export default class Project {
         })
     }
 
-    changeTaskPriority(taskName, newPriority){
+    changeTaskDueDate(taskName, newDueDate){
         this.tasks.filter((task) => {
             if(task.getTaskName() === taskName){
-                task.setPriority(newPriority)
+                task.setDueDate(newDueDate)
+            }
+        })
+    }
+
+    changeTaskStatus(taskName, newStatus){
+        this.tasks.filter((task) =>{
+            if(task.getTaskName() === taskName){
+                task.setStatus(newStatus)
             }
         })
     }

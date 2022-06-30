@@ -2,13 +2,13 @@ export default class Task{
     name = ''
     dueDate = ''
     description =''
-    priority = 1
+    status = false
 
-    constructor(inName, inDueDate, inDescription, inPriority){
+    constructor(inName, inDueDate, inDescription, inStatus){
         this.name = inName
         this.dueDate = inDueDate
         this.description = inDescription
-        this.priority = inPriority
+        this.status = inStatus
     }
 
     setTaskName(inTaskName){
@@ -23,8 +23,8 @@ export default class Task{
         this.description = inDescription
     }
 
-    setPriority(inPriority){
-        this.priority = inPriority
+    setStatus(inStatus){
+        this.status = inStatus
     }
 
     getTaskName(){
@@ -39,7 +39,7 @@ export default class Task{
         return this.description
     }
 
-    getPriority(){
-        return this.priority
+    getStatus(){
+        return this.status
     }
 }
