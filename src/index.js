@@ -1,6 +1,7 @@
 import Project from './Project'
 import Task from './Task'
 import toDoList from './ToDoList'
+import Storage from './Storage'
 
 
 const lista = new toDoList()
@@ -15,9 +16,15 @@ const newtask = new Task('Gym', '10.10.2022', 'workout time', 1)
 const tasks = [task1, task2, task3, task4, newtask]
 
 const project = new Project('test', tasks)
+const project2 = new Project('test2', tasks)
 
-console.log(lista)
 lista.addProject(project)
+lista.addProject(project2)
 console.log(lista)
-lista.renameTask('test', '1', 'dzienki działa')
-console.log(lista)
+Storage.setToDoList(lista)
+Storage.renameProject('test', 'dzienki działa')
+const lista2 = Storage.getToDoList()
+console.log(lista2)
+Storage.changeCurrentProject('dzienki działa')
+const lista3 = Storage.getToDoList()
+console.log(lista3)

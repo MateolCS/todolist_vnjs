@@ -1,12 +1,13 @@
 import Project from './Project'
-import Task from './Task'
 
 export default class toDoList{
     projects = []
+    currentProject = null
 
     constructor(){
         this.projects = []
         this.projects.push(new Project('Default', []))
+        this.currentProject = this.projects[0]
     }
 
     addProject(inProject){
@@ -77,6 +78,22 @@ export default class toDoList{
         this.projects.filter((project)=>{
             if(project.getName() === projectName){
                 project.addTask(inTask)
+            }
+        })
+    }
+
+    setCurrentProject(inProject){
+        this.currentProject = inProject
+    }
+
+    getCurrentProject(){
+        return this.currentProject
+    }
+
+    changeCurrentProject(newCurrentProjectName){
+        this.currentProject = this.projects.find((project)=>{
+            if(project.getName() === newCurrentProjectName){
+                return project
             }
         })
     }

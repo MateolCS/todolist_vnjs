@@ -2,7 +2,6 @@ import Task from './Task'
 import Project from './Project'
 import toDoList from './ToDoList'
 
-
 export default class Storage{
   
     static setToDoList(inToDoList){
@@ -10,18 +9,17 @@ export default class Storage{
     }
 
     static getToDoList(){
-        if(localStorage.getItem('toDoList') === null){
-            const toDoList = new toDoList()
-        }
-        const toDoList = Object.assign(new toDoList(),JSON.parse(localStorage.getItem('toDoList')))
+        const list = Object.assign(new toDoList(),JSON.parse(localStorage.getItem('toDoList')))
 
-        toDoList.setProjects(toDoList.getProjects() = toDoList.projects.map((project) => Object.assign(new Project(), project)))
+        list.setProjects(list.getProjects().map((project) => Object.assign(new Project(), project)))
 
-        toDoList.getProjects().forEach((project) =>{
+        list.getProjects().forEach((project) =>{
             project.getTasks().map((task) => Object.assign(new Task(), task))
         })
 
-        return toDoList
+        list.setCurrentProject(Object.assign(new Project(), list.getCurrentProject()))
+
+        return list
     }
 
     static addProject(project){
@@ -75,6 +73,13 @@ export default class Storage{
     static changeTaskStatus(projectName, taskName, newStatus){
         const toDoList = Storage.getToDoList()
         toDoList.changeTaskStatus(projectName, taskName, newStatus)
+        Storage.setToDoList(toDoList)
+    }
+
+    static changeCurrentProject(newCurrentProjectName){
+        const toDoList = Storage.getToDoList()
+        toDoList.changeCurrentProject(newCurrentProjectName)
+        Storage.setToDoList(toDoList)
     }
 
 }
