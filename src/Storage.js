@@ -18,6 +18,7 @@ export default class Storage{
         })
 
         list.setCurrentProject(Object.assign(new Project(), list.getCurrentProject()))
+        list.getCurrentProject().setTasks(list.getCurrentProject().getTasks().map((task) => Object.assign(new Task(), task)))
 
         return list
     }
@@ -80,6 +81,11 @@ export default class Storage{
         const toDoList = Storage.getToDoList()
         toDoList.changeCurrentProject(newCurrentProjectName)
         Storage.setToDoList(toDoList)
+    }
+
+    static getCurrentProject(){
+        const toDoList = Storage.getToDoList()
+        return toDoList.getCurrentProject()
     }
 
 }
