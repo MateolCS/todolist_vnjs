@@ -1,3 +1,5 @@
+import Project from "./Project"
+
 
 export const drawTask = (inTask) => {
     const task = document.createElement('div')
@@ -29,6 +31,18 @@ export const drawProject = (inProject) => {
     const project = document.createElement('li')
     project.classList.add('main__nav__list__item')
     project.textContent = inProject.getName()
+
+    return project
+}
+
+export const getNewProject = () => {
+    const projectInput = document.querySelector('#add-project-input')
+    const projectName = projectInput.value
+    if(projectName === ''){
+        return
+    }
+    const project = new Project(projectName)
+    projectInput.value = ''
 
     return project
 }

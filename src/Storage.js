@@ -14,6 +14,9 @@ export default class Storage{
         list.setProjects(list.getProjects().map((project) => Object.assign(new Project(), project)))
 
         list.getProjects().forEach((project) =>{
+            if(project.getTasks() === undefined){
+                project.setTasks([])
+            }
             project.getTasks().map((task) => Object.assign(new Task(), task))
         })
 
