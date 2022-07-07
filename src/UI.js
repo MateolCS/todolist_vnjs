@@ -7,11 +7,13 @@ export default class UI{
     static initializeUI(){
         UI.drawTasks()
         UI.drawProjects()
+        UI.addEvents()
     }
 
     static drawTasks(){
         const tasks = Storage.getCurrentProject().getTasks()
         const container = document.querySelector('.container')
+        container.innerHTML = ''
 
         tasks.map((task) =>{
             container.appendChild(drawTask(task))
@@ -24,6 +26,18 @@ export default class UI{
 
         projects.map((project) =>{
             container.appendChild(drawProject(project))
+        })
+
+    }
+
+    static addEvents(){
+        const projects = document.querySelectorAll('.main__nav__list__item')
+        projects.forEach((project) =>{
+            project.addEventListener('click', (e) =>{
+                //console.log(e.target.textContent)
+                Storage.changeCurrentProject(e.target.textContent)
+                UI.drawTasks()
+            })
         })
     }
 }

@@ -183,3 +183,60 @@ body{
     font-weight: 500;
     font-size: 1rem;
 }
+
+.add__task{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #370617;
+    padding: 1rem 2rem;
+    background-color: #ffecd1;
+    border-radius: 10px;
+    display: none;
+}
+
+.add__task__container{
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    width: 100%;    
+}
+
+.add__task__title{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.add__task__input{
+    padding: .3rem;
+    border-radius: 5px;
+    background-color: #e27e52;
+    color: #006868;
+    border: 2px solid #81171b;
+}
+
+.add__task__button{
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: .4rem;
+    background-color: #6a040f;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+.modify__task{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #370617;
+    padding: 1rem 2rem;
+    background-color: #ffecd1;
+    border-radius: 10px;
+    display: none;
+}

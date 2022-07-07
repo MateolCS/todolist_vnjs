@@ -40,22 +40,34 @@
             </a>
         </p>
     </footer>
-    <div class="add__project">
+    <div class="add__project" id="project-modal">
         <div class="add__project__container">
             <h2 class="add__project__title">Add Project</h2>
             <input type="text" class="add__project__input" id="add-project-input" placeholder="Enter project name">
             <button class="add__project__button" id="add__project__button">Add</button>
         </div>
     </div>
-    <div class="add__task">
+    <div class="add__task" class="add-task-modal">
         <div class="add__task__container">
             <h2 class="add__task__title">
                 Add Task
             </h2>
-            <input type="text" class="add__task__input" placeholder="Task Name">
-            <input type="date" class="add__task__input" placeholder="Task Due Date">
-            <textarea class="add__task__textarea" placeholder="Task Description"></textarea>
-            <input type="text" class="add__task__input" placeholder='Enter "important" if your task is important'>
+            <input type="text" id="add-task-taskname" class="add__task__input" placeholder="Task Name">
+            <input type="date" id="add-task-duedate" class="add__task__input" placeholder="Task Due Date">
+            <textarea class="add__task__input" id="add-task-description" placeholder="Task Description"></textarea>
+            <input type="text" class="add__task__input" id="add-task-status" placeholder='Enter "important" if your task is important'>
+            <button class="add__task__button" id="add-task">Add task</button>
+        </div>
+    </div>
+    <div class="modify__task" id="modify-task-modal">
+        <div class="add__task__container">
+            <h2 class="add__task__title">
+                Modify Task
+            </h2>
+            <input type="text" id="modify-task-newname" class="add__task__input" placeholder="Task Name">
+            <input type="date" id="modify-task-newduedate" class="add__task__input" placeholder="Task Due Date">
+            <textarea class="add__task__input" id="modify-task-newdesc" placeholder="Task Description"></textarea>
+            <button class="add__task__button" id="modify-task">Modify task</button>
         </div>
     </div>
 </body>
