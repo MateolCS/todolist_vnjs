@@ -1,5 +1,5 @@
 import Storage from './Storage';
-import { drawTask, drawProject, getNewProject } from './Utils';
+import { drawTask, drawProject, getNewProject, getNewTask } from './Utils';
 
 export default class UI{
     constructor(){}
@@ -53,6 +53,24 @@ export default class UI{
                  console.log(Storage.getToDoList())
                 // UI.drawProjects()
                 // addProjectModal.style.display = 'none'
+            })
+        })
+
+        const addTask = document.querySelector('#open-addtask-modal')
+        addTask.addEventListener('click', () =>{
+            const addTaskModal = document.querySelector('#add-task-modal')
+            addTaskModal.style.display = 'block'
+
+            const addTaskButton = document.querySelector('#add-task')
+            addTaskButton.addEventListener('click', () =>{
+                const task = getNewTask()
+                if(task === undefined){
+                    return
+                }
+                Storage.addTask(Storage.getCurrentProject().getName(), task)
+                Storage.currentProjectAddTask(task)
+                UI.drawTasks()
+                addTaskModal.style.display = 'none'
             })
         })
     }

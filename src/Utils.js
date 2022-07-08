@@ -1,5 +1,5 @@
 import Project from "./Project"
-
+import Task from "./Task"
 
 export const drawTask = (inTask) => {
     const task = document.createElement('div')
@@ -45,5 +45,32 @@ export const getNewProject = () => {
     projectInput.value = ''
 
     return project
+}
+
+export const getNewTask = () => {
+    const taskInput = document.querySelector('#add-task-taskname')
+    const taskName = taskInput.value
+
+    const taskDueDateInput = document.querySelector('#add-task-duedate')
+    const taskDueDate = taskDueDateInput.value
+
+    const taskDescriptionInput = document.querySelector('#add-task-description')
+    const taskDescription = taskDescriptionInput.value
+
+    const statusInput = document.querySelector('#add-task-status')
+    const status = statusInput.value === 'important' ? true : false
+
+    if(taskName === '' || taskDueDate === '' || taskDescription === ''){
+        alert('Please fill in all fields')
+    }else{
+        const task = new Task(taskName, taskDueDate, taskDescription, status)
+
+        taskInput.value = ''
+        taskDueDateInput.value = ''
+        taskDescriptionInput.value = ''
+        statusInput.value = ''
+
+        return task
+    }
 }
 

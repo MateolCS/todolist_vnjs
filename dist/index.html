@@ -11,9 +11,13 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__title">
-            What do You want ToDo?
-        </h1>
+        <div class="header__container">
+            <h1 class="header__title">
+                What do You want ToDo?
+            </h1>
+            <i class="fa-solid fa-plus header__addtask" id="open-addtask-modal"></i>
+        </div>
+        
     </header>
     <main class="main">
         <nav class="main__nav">
@@ -47,7 +51,7 @@
             <button class="add__project__button" id="add-project-button">Add</button>
         </div>
     </div>
-    <div class="add__task" class="add-task-modal">
+    <div class="add__task" id="add-task-modal">
         <div class="add__task__container">
             <h2 class="add__task__title">
                 Add Task

@@ -91,4 +91,10 @@ export default class Storage{
         return toDoList.getCurrentProject()
     }
 
+    static currentProjectAddTask(task){
+        const toDoList = Storage.getToDoList()
+        toDoList.currentProjectAddTask(task)
+        Storage.setToDoList(toDoList)
+    }
+
 }

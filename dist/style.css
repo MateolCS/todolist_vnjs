@@ -18,14 +18,29 @@ body{
     background-color: #faa307;
     color: #370617;
     padding: 1.2rem;
+}
+
+.header__container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
 }
 
 .header__title{
     font-size: 3rem;
 }
+
+.header__addtask{
+    font-size: 3rem;
+}
+
+.header__addtask:hover{
+    cursor: pointer;
+    color: #ef233c;
+}
+
 
 .main{
     width: 100%;
