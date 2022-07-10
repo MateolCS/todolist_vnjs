@@ -1,5 +1,5 @@
 import Storage from './Storage';
-import { drawTask, drawProject, getNewProject, getNewTask } from './Utils';
+import { drawTask, drawProject, getNewProject, getNewTask, getModifyTask } from './Utils';
 
 export default class UI{
     constructor(){}
@@ -41,7 +41,7 @@ export default class UI{
         })
 
         const addProject = document.querySelector('#add-project')
-        addProject.addEventListener('click', () =>{
+        addProject.addEventListener('click', (e) =>{
             const addProjectModal = document.querySelector('#project-modal')
             addProjectModal.style.display = 'block'
 
@@ -73,5 +73,29 @@ export default class UI{
                 addTaskModal.style.display = 'none'
             })
         })
+
+        const tasksTitles = document.querySelectorAll('.task__title')
+        tasksTitles.forEach((taskTitle) =>{
+            taskTitle.addEventListener('click', (e)=>{
+                const selectedTitle = e.target.textContent
+                const selectedTask = Storage.getCurrentProject().getTask(selectedTitle)
+                console.log(selectedTask)
+                
+                const taskModal = document.querySelector('#modify-task-modal')
+                taskModal.style.display = 'block'
+
+                const modifyTask = document.querySelector('#modify-task')
+                modifyTask.addEventListener('click', () =>{
+                    const changedTask = getModifyTask()
+                    if(changedTask === undefined){
+                        return
+                    }
+                    Storage.modifyTask(selectedTask, changedTask)
+                    UI.drawTasks()
+                })
+
+            })
+        })
     }
+
 }

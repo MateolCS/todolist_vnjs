@@ -13,11 +13,9 @@ export default class Storage{
 
         list.setProjects(list.getProjects().map((project) => Object.assign(new Project(), project)))
 
+
         list.getProjects().forEach((project) =>{
-            if(project.getTasks() === undefined){
-                project.setTasks([])
-            }
-            project.getTasks().map((task) => Object.assign(new Task(), task))
+            project.setTasks(project.getTasks().map((task) => Object.assign(new Task(), task)))
         })
 
         list.setCurrentProject(Object.assign(new Project(), list.getCurrentProject()))
@@ -58,7 +56,7 @@ export default class Storage{
 
     static renameTask(projectName, taskName, newTaskName){
         const toDoList = Storage.getToDoList()
-        toDoList.renameTask(projectName, taskName, newTaskName)
+        toDoList.changeTaskName(projectName, taskName, newTaskName)
         Storage.setToDoList(toDoList)
     }
 
@@ -94,7 +92,9 @@ export default class Storage{
     static currentProjectAddTask(task){
         const toDoList = Storage.getToDoList()
         toDoList.currentProjectAddTask(task)
+        toDoList.addTask(toDoList.getCurrentProject().getName(), task)
         Storage.setToDoList(toDoList)
     }
+
 
 }

@@ -34,7 +34,7 @@ export default class toDoList{
         this.projects = inProjects
     }
 
-    renameTask(projectName, taskName, newTaskName){
+    changeTaskName(projectName, taskName, newTaskName){
         this.projects.filter((project)=>{
             if(project.getName() === projectName){
                 project.renameTask(taskName, newTaskName)
@@ -101,4 +101,6 @@ export default class toDoList{
     currentProjectAddTask(inTask){
         this.currentProject.addTask(inTask)
     }
+
+
 }

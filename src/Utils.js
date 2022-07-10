@@ -74,3 +74,32 @@ export const getNewTask = () => {
     }
 }
 
+export const windowEvent = (modal) => {
+
+    window.addEventListener('click', (e)=>{
+        if(e.target !== modal){
+            modal.style.display = 'none'
+        }
+    })
+}
+
+export const getModifyTask = () => {
+
+    const newTaskName = document.querySelector('#modify-task-newname')
+    const newName = newTaskName.value
+
+    const newTaskDueDate = document.querySelector('#modify-task-newduedate')
+    const newDueDate = newTaskDueDate.value
+
+    const newTaskDescription = document.querySelector('#modify-task-newdesc')
+    const newDescription = newTaskDescription.value
+
+    const modifiedTask = new Task(newName, newDueDate, newDescription)
+
+    newTaskName.value = ''
+    newTaskDueDate.value = ''
+    newTaskDescription.value = ''
+
+    return modifiedTask
+}
+

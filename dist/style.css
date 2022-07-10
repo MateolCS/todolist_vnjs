@@ -82,6 +82,11 @@ body{
     font-weight: bold;
 }
 
+.task__title:hover{
+    cursor: pointer;
+    color: #d00000;
+}
+
 .task__duedate{
     font-size: 1.2rem;
     font-weight: bold;

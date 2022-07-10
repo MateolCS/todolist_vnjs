@@ -1,3 +1,5 @@
+import Task from "./Task"
+
 export default class Project {
     name = ''
     tasks = []
@@ -36,8 +38,10 @@ export default class Project {
 
     renameTask(taskName, newTaskName){
         this.tasks.filter((task) => {
+            console.log(task)
             if(task.getTaskName() === taskName){
                 task.setTaskName(newTaskName)
+                console.log(task)
             }
         })
     }
