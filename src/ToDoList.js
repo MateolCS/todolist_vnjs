@@ -34,49 +34,55 @@ export default class toDoList{
         this.projects = inProjects
     }
 
-    changeTaskName(projectName, taskName, newTaskName){
+    changeTaskName(taskName, newTaskName){
+        this.currentProject.renameTask(taskName, newTaskName)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.renameTask(taskName, newTaskName)
             }
         })
     }
 
-    changeTaskDescription(projectName, taskName, newDescription){
+    changeTaskDescription(taskName, newDescription){
+        this.currentProject.changeTaskDescription(taskName, newDescription)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.changeTaskDescription(taskName, newDescription)
             }
         })
     }
 
-    changeTaskDueDate(projectName, taskName, newDueDate){
+    changeTaskDueDate(taskName, newDueDate){
+        this.currentProject.changeTaskDueDate(taskName, newDueDate)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.changeTaskDueDate(taskName, newDueDate)
             }
         })
     }
 
-    changeTaskStatus(projectName, taskName, newStatus){
+    changeTaskStatus(taskName, newStatus){
+        this.currentProject.changeTaskStatus(taskName, newStatus)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.changeTaskStatus(taskName, newStatus)
             }
         })
     }
 
-    deleteTask(projectName, taskName){
+    deleteTask(taskName){
+        this.currentProject.deleteTask(taskName)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.deleteTask(taskName)
             }
         })
     }
 
-    addTask(projectName, inTask){
+    addTask(inTask){
+        this.currentProject.addTask(inTask)
         this.projects.filter((project)=>{
-            if(project.getName() === projectName){
+            if(project.getName() === this.currentProject.getName()){
                 project.addTask(inTask)
             }
         })

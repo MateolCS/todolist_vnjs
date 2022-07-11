@@ -8,6 +8,7 @@ export default class UI{
         UI.drawTasks()
         UI.drawProjects()
         UI.addEvents()
+        UI.projectTitles()
     }
 
     static drawTasks(){
@@ -23,23 +24,15 @@ export default class UI{
     static drawProjects(){
         const projects = Storage.getToDoList().getProjects()
         const container = document.querySelector('#projects')
-
+        container.innerHTML = ''
         projects.map((project) =>{
             container.appendChild(drawProject(project))
         })
+        UI.projectSwap()
 
     }
 
     static addEvents(){
-        const projects = document.querySelectorAll('.main__nav__list__item')
-        projects.forEach((project) =>{
-            project.addEventListener('click', (e) =>{
-                //console.log(e.target.textContent)
-                Storage.changeCurrentProject(e.target.textContent)
-                UI.drawTasks()
-            })
-        })
-
         const addProject = document.querySelector('#add-project')
         addProject.addEventListener('click', (e) =>{
             const addProjectModal = document.querySelector('#project-modal')
@@ -48,11 +41,9 @@ export default class UI{
             const addProjectButton = document.querySelector('#add-project-button')
             addProjectButton.addEventListener('click', () =>{
                 const project = getNewProject()
-                console.log(project)
-                 Storage.addProject(project)
-                 console.log(Storage.getToDoList())
-                // UI.drawProjects()
-                // addProjectModal.style.display = 'none'
+                Storage.addProject(project)
+                UI.drawProjects()
+                addProjectModal.style.display = 'none'
             })
         })
 
@@ -68,18 +59,32 @@ export default class UI{
                     return
                 }
                 Storage.addTask(Storage.getCurrentProject().getName(), task)
-                Storage.currentProjectAddTask(task)
+                // Storage.currentProjectAddTask(task)
                 UI.drawTasks()
                 addTaskModal.style.display = 'none'
             })
         })
 
+        
+    }
+
+    static projectSwap(){
+        const projects = document.querySelectorAll('.main__nav__list__item')
+        projects.forEach((project) =>{
+            project.addEventListener('click', (e) =>{
+                Storage.changeCurrentProject(e.target.textContent)
+                UI.drawTasks()
+                UI.projectTitles()
+            })
+        })
+    }
+
+    static projectTitles(){
         const tasksTitles = document.querySelectorAll('.task__title')
         tasksTitles.forEach((taskTitle) =>{
             taskTitle.addEventListener('click', (e)=>{
                 const selectedTitle = e.target.textContent
                 const selectedTask = Storage.getCurrentProject().getTask(selectedTitle)
-                console.log(selectedTask)
                 
                 const taskModal = document.querySelector('#modify-task-modal')
                 taskModal.style.display = 'block'
@@ -92,10 +97,13 @@ export default class UI{
                     }
                     Storage.modifyTask(selectedTask, changedTask)
                     UI.drawTasks()
+                    UI.projectTitles()
+                    taskModal.style.display = 'none'
                 })
 
             })
         })
+
     }
 
 }

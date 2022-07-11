@@ -15,6 +15,9 @@ export default class Storage{
 
 
         list.getProjects().forEach((project) =>{
+            if(project.getTasks() === undefined){
+                project.setTasks([])
+            }
             project.setTasks(project.getTasks().map((task) => Object.assign(new Task(), task)))
         })
 
@@ -94,6 +97,23 @@ export default class Storage{
         toDoList.currentProjectAddTask(task)
         toDoList.addTask(toDoList.getCurrentProject().getName(), task)
         Storage.setToDoList(toDoList)
+    }
+
+    static modifyTask(oldTask, newTask){
+        const toDoList = Storage.getToDoList()
+        if(oldTask.getTaskName() !== newTask.getTaskName() && newTask.getTaskName() !== ''){
+            toDoList.changeTaskName(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskName())
+        }
+
+        if(oldTask.getTaskDescription() !== newTask.getTaskDescription() && newTask.getTaskDescription() !== ''){
+            toDoList.changeTaskDescription(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskDescription())
+        }
+
+        if(oldTask.getTaskDueDate() !== newTask.getTaskDueDate() && newTask.getTaskDueDate() !== ''){
+            toDoList.changeTaskDueDate(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskDueDate())
+        }
+
+        Storage.changeCurrentProject(toDoList.getCurrentProject().getName())
     }
 
 
