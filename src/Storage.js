@@ -45,39 +45,39 @@ export default class Storage{
         Storage.setToDoList(toDoList)
     }
 
-    static addTask(projectName, task){
+    static addTask(task){
         const toDoList = Storage.getToDoList()
-        toDoList.addTask(projectName, task)
+        toDoList.addTask(task)
         Storage.setToDoList(toDoList)
     }
 
-    static deleteTask(projectName, taskName){
+    static deleteTask(taskName){
         const toDoList = Storage.getToDoList()
-        toDoList.deleteTask(projectName, taskName)
+        toDoList.deleteTask(taskName)
         Storage.setToDoList(toDoList)
     }
 
-    static renameTask(projectName, taskName, newTaskName){
+    static renameTask(taskName, newTaskName){
         const toDoList = Storage.getToDoList()
-        toDoList.changeTaskName(projectName, taskName, newTaskName)
+        toDoList.changeTaskName(taskName, newTaskName)
         Storage.setToDoList(toDoList)
     }
 
-    static changeTaskDescription(projectName, taskName, newDescription){
+    static changeTaskDescription(taskName, newDescription){
         const toDoList = Storage.getToDoList()
-        toDoList.changeTaskDescription(projectName, taskName, newDescription)
+        toDoList.changeTaskDescription(taskName, newDescription)
         Storage.setToDoList(toDoList)
     }
 
-    static changeTaskDueDate(projectName, taskName, newDueDate){
+    static changeTaskDueDate(taskName, newDueDate){
         const toDoList = Storage.getToDoList()
-        toDoList.changeTaskDueDate(projectName, taskName, newDueDate)
+        toDoList.changeTaskDueDate(taskName, newDueDate)
         Storage.setToDoList(toDoList)
     }
 
-    static changeTaskStatus(projectName, taskName, newStatus){
+    static changeTaskStatus(taskName, newStatus){
         const toDoList = Storage.getToDoList()
-        toDoList.changeTaskStatus(projectName, taskName, newStatus)
+        toDoList.changeTaskStatus(taskName, newStatus)
         Storage.setToDoList(toDoList)
     }
 
@@ -92,28 +92,21 @@ export default class Storage{
         return toDoList.getCurrentProject()
     }
 
-    static currentProjectAddTask(task){
-        const toDoList = Storage.getToDoList()
-        toDoList.currentProjectAddTask(task)
-        toDoList.addTask(toDoList.getCurrentProject().getName(), task)
-        Storage.setToDoList(toDoList)
-    }
-
     static modifyTask(oldTask, newTask){
         const toDoList = Storage.getToDoList()
         if(oldTask.getTaskName() !== newTask.getTaskName() && newTask.getTaskName() !== ''){
-            toDoList.changeTaskName(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskName())
+            toDoList.changeTaskName(oldTask.getTaskName(), newTask.getTaskName())
         }
 
         if(oldTask.getTaskDescription() !== newTask.getTaskDescription() && newTask.getTaskDescription() !== ''){
-            toDoList.changeTaskDescription(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskDescription())
+            toDoList.changeTaskDescription(oldTask.getTaskName(), newTask.getTaskDescription())
         }
 
         if(oldTask.getTaskDueDate() !== newTask.getTaskDueDate() && newTask.getTaskDueDate() !== ''){
-            toDoList.changeTaskDueDate(toDoList.getCurrentProject().getName(), oldTask.getTaskName(), newTask.getTaskDueDate())
+            toDoList.changeTaskDueDate(oldTask.getTaskName(), newTask.getTaskDueDate())
         }
 
-        Storage.changeCurrentProject(toDoList.getCurrentProject().getName())
+        Storage.setToDoList(toDoList)
     }
 
 

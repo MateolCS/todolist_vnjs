@@ -104,9 +104,4 @@ export default class toDoList{
         })
     }
 
-    currentProjectAddTask(inTask){
-        this.currentProject.addTask(inTask)
-    }
-
-
 }

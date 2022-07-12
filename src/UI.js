@@ -8,7 +8,8 @@ export default class UI{
         UI.drawTasks()
         UI.drawProjects()
         UI.addEvents()
-        UI.projectTitles()
+        UI.taskTitles()
+        UI.tasksStatus()
     }
 
     static drawTasks(){
@@ -19,6 +20,7 @@ export default class UI{
         tasks.map((task) =>{
             container.appendChild(drawTask(task))
         })
+        UI.taskTitles()
     }
 
     static drawProjects(){
@@ -58,8 +60,7 @@ export default class UI{
                 if(task === undefined){
                     return
                 }
-                Storage.addTask(Storage.getCurrentProject().getName(), task)
-                // Storage.currentProjectAddTask(task)
+                Storage.addTask(task)
                 UI.drawTasks()
                 addTaskModal.style.display = 'none'
             })
@@ -79,13 +80,12 @@ export default class UI{
         })
     }
 
-    static projectTitles(){
+    static taskTitles(){
         const tasksTitles = document.querySelectorAll('.task__title')
         tasksTitles.forEach((taskTitle) =>{
             taskTitle.addEventListener('click', (e)=>{
-                const selectedTitle = e.target.textContent
-                const selectedTask = Storage.getCurrentProject().getTask(selectedTitle)
-                
+                let selectedTitle = e.target.textContent
+                let selectedTask = Storage.getCurrentProject().getTask(selectedTitle)
                 const taskModal = document.querySelector('#modify-task-modal')
                 taskModal.style.display = 'block'
 
@@ -96,14 +96,23 @@ export default class UI{
                         return
                     }
                     Storage.modifyTask(selectedTask, changedTask)
-                    UI.drawTasks()
-                    UI.projectTitles()
+                    document.location.reload(true)
                     taskModal.style.display = 'none'
                 })
-
             })
         })
 
+    }
+
+    static tasksStatus(){
+        const tasks = document.querySelectorAll('.task')
+        tasks.forEach((task) =>{
+            task.addEventListener('dblclick', (e) =>{
+                const taskTitle = task.firstChild.textContent
+                const taskToChange = Storage.getCurrentProject().getTask(taskTitle)
+                console.log(taskToChange)
+            })
+        })
     }
 
 }

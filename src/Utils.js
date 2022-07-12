@@ -1,5 +1,7 @@
 import Project from "./Project"
 import Task from "./Task"
+import UI from "./UI"
+import Storage from "./Storage"
 
 export const drawTask = (inTask) => {
     const task = document.createElement('div')
@@ -101,5 +103,16 @@ export const getModifyTask = () => {
     newTaskDescription.value = ''
 
     return modifiedTask
+}
+
+export const modifyTaskUI = (task) => {
+    const taskModal = document.querySelector('#modify-task-modal')
+    const changedTask = getModifyTask()
+    if(changedTask === undefined){
+        return
+    }
+    Storage.modifyTask(task, changedTask)
+    UI.drawTasks()
+    taskModal.style.display = 'none'
 }
 
