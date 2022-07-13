@@ -104,4 +104,8 @@ export default class toDoList{
         })
     }
 
+    projectExists(projectName){
+        return this.projects.some((project) => project.getName() === projectName)
+    }
+
 }

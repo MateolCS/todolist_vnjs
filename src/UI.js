@@ -10,6 +10,7 @@ export default class UI{
         UI.addEvents()
         UI.taskTitles()
         UI.tasksStatus()
+        UI.deleteTask()
     }
 
     static drawTasks(){
@@ -43,9 +44,15 @@ export default class UI{
             const addProjectButton = document.querySelector('#add-project-button')
             addProjectButton.addEventListener('click', () =>{
                 const project = getNewProject()
-                Storage.addProject(project)
-                UI.drawProjects()
-                addProjectModal.style.display = 'none'
+                const toDoList = Storage.getToDoList()
+                if(toDoList.projectExists(project.getName())){
+                    alert('Project already exists')
+                    addProjectModal.style.display = 'none'
+                }else{
+                    Storage.addProject(project)
+                    UI.drawProjects()
+                    addProjectModal.style.display = 'none'
+                }
             })
         })
 
@@ -75,7 +82,9 @@ export default class UI{
             project.addEventListener('click', (e) =>{
                 Storage.changeCurrentProject(e.target.textContent)
                 UI.drawTasks()
-                UI.projectTitles()
+                UI.taskTitles()
+                UI.tasksStatus()
+                UI.deleteTask()
             })
         })
     }
@@ -110,6 +119,18 @@ export default class UI{
             task.addEventListener('dblclick', (e) =>{
                 const taskTitle = task.firstChild.textContent
                 Storage.changeTaskStatus(taskTitle)
+                UI.drawTasks()
+                UI.tasksStatus()
+            })
+        })
+    }
+
+    static deleteTask(){
+        const deleteButtons = document.querySelectorAll('.task__delete')
+        deleteButtons.forEach((deleteButton) =>{
+            deleteButton.addEventListener('click', (e) =>{
+                const taskTitle = e.target.parentNode.firstChild.nextSibling.textContent
+                Storage.deleteTask(taskTitle)
                 UI.drawTasks()
                 UI.tasksStatus()
             })

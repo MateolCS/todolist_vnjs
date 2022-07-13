@@ -68,5 +68,9 @@ export default class Project {
         })
     }
 
+    taskExists(taskName){
+        return this.tasks.some((task) => task.getTaskName() === taskName)
+    }
+
 
 }
