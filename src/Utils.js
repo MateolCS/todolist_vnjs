@@ -22,6 +22,11 @@ export const drawTask = (inTask) => {
     taskDescription.setAttribute('id', 'task-description')
     taskDescription.textContent = inTask.getTaskDescription()
 
+    const taskStatus = inTask.getStatus()
+    if(taskStatus){
+        task.classList.add('task__done')
+    }
+
     task.appendChild(taskTitle)
     task.appendChild(taskDueDate)
     task.appendChild(taskDescription)

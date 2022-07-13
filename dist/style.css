@@ -77,6 +77,10 @@ body{
     background-color: #FFD15C;
 }
 
+.task__done{
+    background-color: #adc178;
+}
+
 .task__title{
     font-size: 1.5rem;
     font-weight: bold;

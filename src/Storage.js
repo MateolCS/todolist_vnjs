@@ -75,9 +75,9 @@ export default class Storage{
         Storage.setToDoList(toDoList)
     }
 
-    static changeTaskStatus(taskName, newStatus){
+    static changeTaskStatus(taskName){
         const toDoList = Storage.getToDoList()
-        toDoList.changeTaskStatus(taskName, newStatus)
+        toDoList.changeTaskStatus(taskName)
         Storage.setToDoList(toDoList)
     }
 

@@ -42,4 +42,8 @@ export default class Task{
     getStatus(){
         return this.status
     }
+
+    setStatus(){
+        this.status = !this.status
+    }
 }

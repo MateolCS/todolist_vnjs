@@ -60,10 +60,10 @@ export default class Project {
         })
     }
 
-    changeTaskStatus(taskName, newStatus){
+    changeTaskStatus(taskName){
         this.tasks.filter((task) =>{
             if(task.getTaskName() === taskName){
-                task.setStatus(newStatus)
+                task.setStatus()
             }
         })
     }

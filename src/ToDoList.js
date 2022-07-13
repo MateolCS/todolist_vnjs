@@ -61,11 +61,11 @@ export default class toDoList{
         })
     }
 
-    changeTaskStatus(taskName, newStatus){
-        this.currentProject.changeTaskStatus(taskName, newStatus)
+    changeTaskStatus(taskName){
+        this.currentProject.changeTaskStatus(taskName)
         this.projects.filter((project)=>{
             if(project.getName() === this.currentProject.getName()){
-                project.changeTaskStatus(taskName, newStatus)
+                project.changeTaskStatus(taskName)
             }
         })
     }

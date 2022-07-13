@@ -109,8 +109,9 @@ export default class UI{
         tasks.forEach((task) =>{
             task.addEventListener('dblclick', (e) =>{
                 const taskTitle = task.firstChild.textContent
-                const taskToChange = Storage.getCurrentProject().getTask(taskTitle)
-                console.log(taskToChange)
+                Storage.changeTaskStatus(taskTitle)
+                UI.drawTasks()
+                UI.tasksStatus()
             })
         })
     }
