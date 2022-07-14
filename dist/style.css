@@ -144,7 +144,20 @@ body{
 .main__nav__list__item{
     width: 100%;
     cursor: pointer;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.main__nav__list__item .project__delete{
+    display: none;
+    font-size: 1.5rem;
+    color: #e9c46a;
+}
+
+.visible{
+    display: block !important;
 }
 
 .footer{

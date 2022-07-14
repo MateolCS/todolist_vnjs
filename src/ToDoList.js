@@ -15,7 +15,7 @@ export default class toDoList{
     }
 
     deleteProject(delProjectName){
-        this.projects.filter((project) => project.name === delProjectName)
+        this.projects = this.projects.filter((project) => project.getName() !== delProjectName)
     }
 
     renameProject(projectName, newProjectName){

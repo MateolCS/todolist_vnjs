@@ -33,7 +33,7 @@ export default class Project {
     }
 
     deleteTask(delTaskName){
-        this.tasks = this.tasks.filter((task) => task.name !== delTaskName)
+        this.tasks = this.tasks.filter((task) => task.getTaskName() !== delTaskName)
     }
 
     renameTask(taskName, newTaskName){

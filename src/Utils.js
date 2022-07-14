@@ -42,6 +42,11 @@ export const drawProject = (inProject) => {
     project.classList.add('main__nav__list__item')
     project.textContent = inProject.getName()
 
+    const closeButton = document.createElement('i')
+    closeButton.classList.add('fa-solid', 'fa-circle-xmark', 'project__delete')
+
+    project.appendChild(closeButton)
+
     return project
 }
 

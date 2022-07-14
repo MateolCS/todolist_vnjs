@@ -11,6 +11,8 @@ export default class UI{
         UI.taskTitles()
         UI.tasksStatus()
         UI.deleteTask()
+        UI.deleteProject()
+        UI.projectHover()
     }
 
     static drawTasks(){
@@ -51,6 +53,9 @@ export default class UI{
                 }else{
                     Storage.addProject(project)
                     UI.drawProjects()
+                    UI.projectSwap()
+                    UI.deleteProject()
+                    UI.projectHover()
                     addProjectModal.style.display = 'none'
                 }
             })
@@ -85,6 +90,8 @@ export default class UI{
                 UI.taskTitles()
                 UI.tasksStatus()
                 UI.deleteTask()
+                UI.projectHover()
+                UI.deleteProject()
             })
         })
     }
@@ -133,6 +140,35 @@ export default class UI{
                 Storage.deleteTask(taskTitle)
                 UI.drawTasks()
                 UI.tasksStatus()
+            })
+        })
+    }
+
+    static deleteProject(){
+        const deleteButtons = document.querySelectorAll('.project__delete')
+        deleteButtons.forEach((deleteButton) =>{
+            deleteButton.addEventListener('click', (e) =>{
+                const projectName = e.target.parentNode.textContent
+                Storage.deleteProject(projectName)
+                UI.drawProjects()
+                UI.projectSwap()
+                UI.deleteProject()
+                UI.projectHover()
+            })
+        })
+    }
+
+    static projectHover(){
+        const projects = document.querySelectorAll('.main__nav__list__item')
+        projects.forEach((project) =>{
+            project.addEventListener('mouseenter', (e) =>{
+                const selectedProject = e.target.firstChild.nextSibling
+                selectedProject.classList.add('visible')
+            })
+
+            project.addEventListener('mouseleave', (e) =>{
+                const selectedProject = e.target.firstChild.nextSibling
+                selectedProject.classList.remove('visible')
             })
         })
     }
